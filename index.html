@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Likeminds Solutions (Private) Limited</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap">
+    <style>
+        /* Reset and Core Rules */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary-violet: #6366f1; /* Intelligent Indigo / Violet */
+            --dark-indigo: #0f111a;
+            --slate-gray: #4b5563;
+            --light-bg: #f9fafb;
+            --border-color: #e5e7eb;
+            --white: #ffffff;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--dark-indigo);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 18px 20px;
+        }
+
+        .logo a {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--dark-indigo);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--primary-violet);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            margin-left: 28px;
+            text-decoration: none;
+            color: var(--slate-gray);
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links li a:hover, .nav-links li a.active {
+            color: var(--primary-violet);
+        }
+
+        .toggle-btn {
+            display: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: var(--dark-indigo);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: 90vh;
+            background: linear-gradient(135deg, rgba(99,102,241,0.95) 0%, rgba(15,17,26,0.95) 100%), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1920') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 44px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            max-width: 750px;
+            margin: 0 auto 35px auto;
+            opacity: 0.85;
+            font-weight: 300;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: var(--primary-violet);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #4f46e5;
+            transform: translateY(-1px);
+        }
+
+        /* Base Section Config */
+        section {
+            padding: 90px 0;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 45px;
+            color: var(--dark-indigo);
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: var(--primary-violet);
+            margin: 12px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* About Section & FBR Verification Panel */
+        .about-section {
+            background-color: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        .about-text h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary-violet);
+        }
+
+        .about-text p {
+            color: var(--slate-gray);
+            margin-bottom: 18px;
+            font-size: 16px;
+        }
+
+        .verification-box {
+            background-color: var(--light-bg);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--primary-violet);
+            padding: 25px;
+            border-radius: 4px;
+            margin-top: 30px;
+        }
+
+        .verification-box h4 {
+            font-size: 16px;
+            color: var(--dark-indigo);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .verification-box ul {
+            list-style: none;
+        }
+
+        .verification-box ul li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: var(--slate-gray);
+            border-bottom: 1px dashed #cbd5e1;
+            padding-bottom: 8px;
+        }
+
+        .verification-box ul li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .about-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .stat-card {
+            background-color: #f5f3ff; /* Light purple scale tint */
+            padding: 35px 20px;
+            text-align: center;
+            border-radius: 6px;
+            border: 1px solid #ddd6fe;
+        }
+
+        .stat-card h3 {
+            font-size: 32px;
+            color: var(--primary-violet);
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            color: var(--dark-indigo);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--light-bg);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .contact-sub {
+            text-align: center;
+            color: var(--slate-gray);
+            margin-top: -35px;
+            margin-bottom: 50px;
+            font-size: 16px;
+        }
+
+        .contact-info-centered {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .info-card {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 6px;
+            flex: 1;
+            min-width: 280px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .info-card i {
+            font-size: 26px;
+            color: var(--primary-violet);
+            background-color: #f5f3ff;
+            padding: 14px;
+            border-radius: 6px;
+        }
+
+        .info-card h4 {
+            font-size: 18px;
+            color: var(--dark-indigo);
+            margin-bottom: 8px;
+        }
+
+        .info-card p {
+            color: var(--slate-gray);
+            font-size: 15px;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: var(--dark-indigo);
+            color: #94a3b8;
+            padding: 40px 20px;
+            font-size: 14px;
+            border-top: 1px solid #1e293b;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-socials a {
+            color: #94a3b8;
+            margin-left: 20px;
+            font-size: 18px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-socials a:hover {
+            color: var(--primary-violet);
+        }
+
+        /* Responsive Rulesets */
+        @media(max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media(max-width: 768px) {
+            .toggle-btn {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 65px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                padding: 20px 0;
+                border-top: 1px solid var(--border-color);
+                box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                text-align: center;
+                margin: 12px 0;
+            }
+            .nav-links li a {
+                margin-left: 0;
+            }
+            .hero-content h1 {
+                font-size: 30px;
+            }
+            .hero-content p {
+                font-size: 15px;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-socials {
+                margin-top: 10px;
+            }
+            .footer-socials a {
+                margin: 0 10px;
+            }
+            .contact-info-centered {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <div class="logo"><a href="#">Likeminds <span>Solutions</span></a></div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">Corporate Profile</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+            <div class="toggle-btn" id="toggleBtn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h1>Synergizing Minds, Engineering Solutions</h1>
+            <p>Likeminds Solutions (Private) Limited delivers intelligent cloud integrations, advanced system automations, and bespoke technological consulting engineered for scale-ready commercial sectors.</p>
+            <a href="#about" class="btn-primary">Verify Corporate Profile</a>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>Corporate Profile</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3>Empowering Digital Innovation</h3>
+                    <p>We are a registered private limited technology enterprise dedicated to formulating secure cloud infrastructures, advanced program architectures, and clean database environments. Our core blueprints bridge technical complexity with high-frequency corporate systems.</p>
+                    <p>Operating with data transparency, strict compliance, and precision standard operations, we assist growing corporate spaces with premium technical setups nationwide.</p>
+                    
+                    <div class="verification-box">
+                        <h4><i class="fa-solid fa-shield-halved"></i> Official Registry Credentials</h4>
+                        <ul>
+                            <li><strong>Company Name:</strong> LIKEMINDS SOLUTIONS ( PRIVATE ) LIMITED</li>
+                            <li><strong>Registration No:</strong> 0299598</li>
+                            <li><strong>Incorporation No:</strong> 850409936</li>
+                            <li><strong>Incorporation Date:</strong> 03-July-2025</li>
+                            <li><strong>Activity Type:</strong> Business / Technical Solutions</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <h3>ACTIVE</h3>
+                        <p>FBR Registered (0299598)</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>TAX OFFICE</h3>
+                        <p>CRO Multan Jurisdiction</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Corporate Presence</h2>
+            <p class="contact-sub">Official physical locations and fiscal registry presence.</p>
+            
+            <div class="contact-info-centered">
+                <div class="info-card">
+                    <i class="fa-solid pointer fa-location-dot"></i>
+                    <div>
+                        <h4>Registered Address</h4>
+                        <p>Haq Bahu Auto Plaza Qadri Manzil Colornel Market Multan, 60000 Pakistan</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <div>
+                        <h4>Tax Office Jurisdiction</h4>
+                        <p>CRO Multan, Inland Revenue Services</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Likeminds Solutions (Private) Limited. All Rights Reserved.</p>
+            <div class="footer-socials">
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile navigation drawer toggle configuration
+        const toggleBtn = document.getElementById('toggleBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        toggleBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            // Smooth transition from stack lines to close mark
+            const icon = toggleBtn.querySelector('i');
+            if(icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close interactive navbar drawer on specific mobile link selection
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = toggleBtn.querySelector('i');
+                if(icon) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
